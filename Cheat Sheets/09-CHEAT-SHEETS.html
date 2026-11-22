@@ -1,0 +1,570 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI-901 cheat sheets - print pack</title>
+<style>
+  :root { color-scheme: light; }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: #eef2f7;
+    color: #14181f;
+    font-family: "Segoe UI", system-ui, -apple-system, Arial, sans-serif;
+  }
+  .toolbar {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    padding: 12px 18px;
+    background: #fff;
+    border-bottom: 1px solid #d8dee9;
+    position: sticky;
+    top: 0;
+    z-index: 2;
+  }
+  .toolbar strong { font-size: .95rem; }
+  .toolbar span { font-size: .76rem; color: #4b5563; }
+  .toolbar button {
+    padding: 8px 14px;
+    border: 0;
+    border-radius: 8px;
+    background: #6d28d9;
+    color: #fff;
+    font: inherit;
+    font-size: .84rem;
+    font-weight: 650;
+    cursor: pointer;
+  }
+  .toolbar button:hover { background: #5b21b6; }
+  .pack { padding: 18px; display: grid; gap: 18px; justify-content: center; }
+  .sheet {
+    width: 210mm;
+    min-height: 297mm;
+    padding: 8mm;
+    background: #fff;
+    box-shadow: 0 10px 30px -18px rgba(16, 24, 40, .55);
+    border: 1px solid #e2e8f0;
+    font-size: 8pt;
+    line-height: 1.12;
+    column-count: 2;
+    column-gap: 6mm;
+    column-fill: auto;
+  }
+  h1 {
+    margin: 0 0 1.5mm;
+    padding-bottom: 1mm;
+    border-bottom: 1.4pt solid #6d28d9;
+    font-size: 1.85em;
+    line-height: 1.12;
+    letter-spacing: -.01em;
+    column-span: all;
+  }
+  h2 {
+    margin: 0 0 .4mm;
+    padding: .8mm 0 .5mm;
+    border-bottom: .7pt solid #cbd5e1;
+    font-size: 1.3em;
+    line-height: 1.15;
+    color: #5b21b6;
+    break-after: avoid;
+  }
+  p { margin: 0 0 1.2mm; }
+  p.note {
+    margin: 1mm 0 1.5mm;
+    font-size: .93em;
+    color: #4b5563;
+    column-span: all;
+  }
+  pre {
+    margin: 0 0 1.2mm;
+    padding: 1mm 1.4mm;
+    background: #f4f1fb;
+    border-left: 1.4pt solid #a78bfa;
+    font-family: "Cascadia Mono", Consolas, monospace;
+    font-size: .92em;
+    line-height: 1.25;
+    white-space: pre-wrap;
+    break-inside: avoid;
+  }
+  code {
+    font-family: "Cascadia Mono", Consolas, monospace;
+    font-size: .92em;
+    background: #f1eefe;
+    padding: 0 .5mm;
+    border-radius: 1mm;
+  }
+  table {
+    width: 100%;
+    margin: 0 0 1.1mm;
+    border-collapse: collapse;
+    table-layout: fixed;
+  }
+  thead { display: table-header-group; }
+  th {
+    padding: .6mm .95mm;
+    background: #f0e9fd;
+    border: .5pt solid #d3c4f7;
+    font-size: .94em;
+    font-weight: 700;
+    letter-spacing: .03em;
+    text-align: left;
+    text-transform: uppercase;
+    color: #4c1d95;
+  }
+  td {
+    padding: .5mm .9mm;
+    border: .5pt solid #d7deea;
+    vertical-align: top;
+    overflow-wrap: anywhere;
+  }
+  td:first-child { width: 27%; font-weight: 600; color: #0f172a; }
+  tr { break-inside: avoid; }
+  ul { margin: 0 0 1.2mm; padding-left: 3.4mm; }
+  li { margin: 0 0 .4mm; }
+  footer {
+    column-span: all;
+    margin-top: 1.2mm;
+    padding-top: .8mm;
+    border-top: .5pt solid #cbd5e1;
+    font-size: .87em;
+    color: #6b7280;
+  }
+  @media print {
+    body { background: #fff; }
+    .toolbar { display: none; }
+    .pack { display: block; padding: 0; }
+    .sheet {
+      width: auto;
+      min-height: 0;
+      margin: 0;
+      padding: 0;
+      border: 0;
+      box-shadow: none;
+      break-after: page;
+    }
+    .sheet:last-of-type { break-after: auto; }
+    @page { size: A4 portrait; margin: 8mm; }
+  }
+</style>
+</head>
+<body>
+<header class="toolbar">
+  <div><strong>AI-901 cheat sheets</strong> &middot; <span>five domains, one A4 page each</span></div>
+  <button type="button" onclick="window.print()">Print all five sheets</button>
+</header>
+<main class="pack">
+
+<article class="sheet" id="sheet-1" aria-label="AI workloads and responsible AI">
+<h1>AI-901 cheat sheet 1/5 &mdash; AI workloads and responsible AI</h1>
+<p class="note"><em>One page. Facts snapshot 2026-11; verify current behaviour on Microsoft Learn before the exam.</em></p>
+<h2>The family tree</h2>
+<table><thead><tr><th>Term</th><th>Definition and memory hook</th></tr></thead><tbody>
+<tr><td>Artificial intelligence</td><td>Systems that reason, perceive, learn, and understand language. The umbrella term.</td></tr>
+<tr><td>Machine learning</td><td>Models learn patterns from data instead of hand-written rules.</td></tr>
+<tr><td>Deep learning</td><td>ML using neural networks with many hidden layers; needs more data and compute.</td></tr>
+<tr><td>Generative AI</td><td>Creates new text, images, audio, or code from a prompt.</td></tr>
+<tr><td>Agent</td><td>A language model plus instructions plus tools; can plan and act.</td></tr>
+</tbody></table>
+<p>Generative AI is one application of AI, not a synonym for it.</p>
+<h2>AI workloads</h2>
+<table><thead><tr><th>Workload</th><th>What it does</th></tr></thead><tbody>
+<tr><td>Computer vision</td><td>Interprets images and video: classify, detect, read text, caption.</td></tr>
+<tr><td>Natural language processing</td><td>Extracts meaning from text: sentiment, entities, key phrases, summaries.</td></tr>
+<tr><td>Speech</td><td>Audio to text, text to audio, or speech between languages.</td></tr>
+<tr><td>Conversational AI</td><td>Holds a dialogue through a bot or agent.</td></tr>
+<tr><td>Predictive analytics</td><td>Forecasts future numeric outcomes from history.</td></tr>
+<tr><td>Recommendation</td><td>Suggests items from user and item behaviour.</td></tr>
+<tr><td>Anomaly detection</td><td>Finds observations that differ from normal.</td></tr>
+<tr><td>Information extraction</td><td>Turns documents into structured fields.</td></tr>
+</tbody></table>
+<h2>Machine learning task types</h2>
+<table><thead><tr><th>Task</th><th>Output and label need</th></tr></thead><tbody>
+<tr><td>Classification</td><td>A class or category. Supervised with labels.</td></tr>
+<tr><td>Regression</td><td>A continuous number. Supervised with labels.</td></tr>
+<tr><td>Forecasting</td><td>A future number from a time series. Supervised.</td></tr>
+<tr><td>Clustering</td><td>Groups of similar records. Unsupervised, no labels.</td></tr>
+<tr><td>Anomaly detection</td><td>Unusual records; usually unsupervised.</td></tr>
+</tbody></table>
+<p>A named category means classification; a quantity means regression; future time-ordered values mean forecasting.</p>
+<h2>Computer vision scenarios</h2>
+<table><thead><tr><th>Scenario</th><th>Task</th></tr></thead><tbody>
+<tr><td>One label for the whole image</td><td>Image classification</td></tr>
+<tr><td>A label and a box per object</td><td>Object detection</td></tr>
+<tr><td>Text read from a photo or scan</td><td>Optical character recognition</td></tr>
+<tr><td>Fields such as vendor and total</td><td>Document Intelligence</td></tr>
+<tr><td>Whether a face exists, pose or blur</td><td>Face detection</td></tr>
+<tr><td>Who a face belongs to</td><td>Face recognition (Limited Access)</td></tr>
+</tbody></table>
+<h2>Responsible AI</h2>
+<table><thead><tr><th>Principle</th><th>Demands and typical control</th></tr></thead><tbody>
+<tr><td>Fairness</td><td>Equitable treatment; test outcomes across groups and balance data.</td></tr>
+<tr><td>Reliability and safety</td><td>Predictable operation and safe failure; thresholds and fallbacks.</td></tr>
+<tr><td>Privacy and security</td><td>Protect data; encryption, access control, PII redaction.</td></tr>
+<tr><td>Inclusiveness</td><td>Usable by everyone; captions, translation, accessibility.</td></tr>
+<tr><td>Transparency</td><td>Disclose AI use, behaviour, and limits.</td></tr>
+<tr><td>Accountability</td><td>People stay answerable; ownership, review boards, audit.</td></tr>
+</tbody></table>
+<h2>Matching requirements to workloads</h2>
+<table><thead><tr><th>Requirement keyword</th><th>Workload</th></tr></thead><tbody>
+<tr><td>Image, photo, video, camera, shelf</td><td>Computer vision</td></tr>
+<tr><td>Review, email, contract, text, language</td><td>Natural language processing</td></tr>
+<tr><td>Audio, voice, transcription, captions</td><td>Speech</td></tr>
+<tr><td>Chat, bot, dialogue, self-service</td><td>Conversational AI</td></tr>
+<tr><td>Forecast, demand, next month, revenue</td><td>Predictive analytics</td></tr>
+<tr><td>Customers also bought, personalise</td><td>Recommendation</td></tr>
+<tr><td>Unusual, outlier, fraud, deviation</td><td>Anomaly detection</td></tr>
+</tbody></table>
+<h2>Exam traps</h2>
+<ul>
+<li>All deep learning is ML; not all ML is deep learning.</li>
+<li>Two classes or five classes are both classification.</li>
+<li>Detection answers <em>what and where</em>, with a bounding box.</li>
+<li>Recognition is audio to text; synthesis is text to audio.</li>
+<li>Unequal outcomes is fairness; disclosure is transparency; governance is accountability.</li>
+<li>Content filters and prompt shields are generative-AI safety controls, not a workload.</li>
+</ul>
+<footer>AI-901 cheat sheet 1 of 5 &middot; unofficial study aid &middot; snapshot 2026-11</footer>
+</article>
+
+<article class="sheet" id="sheet-2" aria-label="Machine learning on Azure">
+<h1>AI-901 cheat sheet 2/5 &mdash; Machine learning on Azure</h1>
+<p class="note"><em>One page. Facts snapshot 2026-11; verify current behaviour on Microsoft Learn before the exam.</em></p>
+<h2>Features, labels, and data splits</h2>
+<table><thead><tr><th>Term</th><th>Meaning and house-price example</th></tr></thead><tbody>
+<tr><td>Feature</td><td>Input variable: bedrooms, floor area, location.</td></tr>
+<tr><td>Label</td><td>Target to predict: selling price.</td></tr>
+<tr><td>Training set</td><td>Fits the model parameters.</td></tr>
+<tr><td>Validation set</td><td>Tunes hyperparameters and compares candidates.</td></tr>
+<tr><td>Test set</td><td>Final unbiased estimate on unseen data; touched once.</td></tr>
+</tbody></table>
+<p><strong>Data leakage</strong> &mdash; test rows inside training data &mdash; inflates the score. Tuning on the test set turns it into a validation set.</p>
+<h2>Supervised vs unsupervised</h2>
+<table><thead><tr><th></th><th>Supervised</th><th>Unsupervised</th></tr></thead><tbody>
+<tr><td>Training data</td><td>Features <strong>and</strong> labels</td><td>Features only</td></tr>
+<tr><td>Goal</td><td>Learn a mapping to a target</td><td>Find structure or groups</td></tr>
+<tr><td>Tasks</td><td>Classification, regression, forecasting</td><td>Clustering, anomaly detection</td></tr>
+<tr><td>Example</td><td>Predict churn: yes or no</td><td>Segment customers</td></tr>
+</tbody></table>
+<h2>Supervised tasks</h2>
+<table><thead><tr><th>Task</th><th>Output and example</th></tr></thead><tbody>
+<tr><td>Binary classification</td><td>Two classes: fraud or legitimate.</td></tr>
+<tr><td>Multi-class classification</td><td>Three or more classes: five ticket categories.</td></tr>
+<tr><td>Regression</td><td>Continuous number: price, temperature.</td></tr>
+<tr><td>Forecasting</td><td>Future number from time series: demand next quarter.</td></tr>
+</tbody></table>
+<h2>Model evaluation</h2>
+<table><thead><tr><th>Metric</th><th>Formula or meaning; when to use</th></tr></thead><tbody>
+<tr><td>Accuracy</td><td>Correct &divide; all. Only useful when classes are balanced.</td></tr>
+<tr><td>Precision</td><td>TP &divide; (TP + FP). False alarms are expensive.</td></tr>
+<tr><td>Recall</td><td>TP &divide; (TP + FN). Missing a positive is expensive.</td></tr>
+<tr><td>F1 score</td><td>Harmonic mean of precision and recall. Imbalanced classes.</td></tr>
+<tr><td>RMSE</td><td>Root mean squared error in target units. Punishes large errors.</td></tr>
+<tr><td>MAE</td><td>Mean absolute error in target units. Every error counts equally.</td></tr>
+</tbody></table>
+<p>Confusion matrix: <strong>TP</strong> true positive, <strong>TN</strong> true negative, <strong>FP</strong> false positive, <strong>FN</strong> false negative. Missed fraud is a false negative, so raise recall. Legitimate mail marked spam is a false positive, so raise precision.</p>
+<p>Accuracy can be 95% while the model misses every positive case. Check precision and recall on imbalanced data.</p>
+<h2>Overfitting and underfitting</h2>
+<table><thead><tr><th>Symptom</th><th>Diagnosis and remedy</th></tr></thead><tbody>
+<tr><td>Great on training, poor on new data</td><td><strong>Overfitting.</strong> More data, simpler model, regularisation, early stopping.</td></tr>
+<tr><td>Poor on training and test</td><td><strong>Underfitting.</strong> Richer model, better features, longer training.</td></tr>
+</tbody></table>
+<h2>Azure Machine Learning</h2>
+<table><thead><tr><th>Asset</th><th>Purpose</th></tr></thead><tbody>
+<tr><td>Workspace</td><td>Top-level container for experiments, data, compute, models, endpoints.</td></tr>
+<tr><td>Compute instance</td><td>Managed workstation for notebooks and interactive work.</td></tr>
+<tr><td>Compute cluster</td><td>Scalable multi-node training; scales to zero when idle.</td></tr>
+<tr><td>Datastore</td><td>Connection details for Azure Blob or Data Lake storage.</td></tr>
+<tr><td>Data asset</td><td>Versioned reference to data used by experiments.</td></tr>
+<tr><td>Environment</td><td>Reproducible packages and dependencies.</td></tr>
+<tr><td>Model registry</td><td>Versions and tracks trained models.</td></tr>
+<tr><td>Pipeline</td><td>Repeatable prepare, train, evaluate, deploy steps.</td></tr>
+<tr><td>Designer</td><td>Drag-and-drop canvas for pipelines.</td></tr>
+<tr><td>Automated ML</td><td>Tries algorithms and hyperparameters, ranks by a primary metric.</td></tr>
+<tr><td>Online endpoint</td><td>Real-time REST predictions.</td></tr>
+<tr><td>Batch endpoint</td><td>Scheduled or on-demand scoring of large datasets.</td></tr>
+</tbody></table>
+<p><strong>AutoML</strong> supports classification, regression, and forecasting. You choose the primary metric (accuracy, recall, RMSE); it selects the best trial by that metric.</p>
+<h2>Deployment and operations</h2>
+<table><thead><tr><th>Need</th><th>Choose</th></tr></thead><tbody>
+<tr><td>Prediction per request</td><td>Online endpoint</td></tr>
+<tr><td>Overnight scoring of millions of rows</td><td>Batch endpoint</td></tr>
+<tr><td>Explore algorithms without code</td><td>Automated ML</td></tr>
+<tr><td>Build a pipeline visually</td><td>Designer</td></tr>
+<tr><td>Reproduce and audit an experiment</td><td>Versioned data, code, pipelines (MLOps)</td></tr>
+<tr><td>Detect drift after launch</td><td>Model monitoring</td></tr>
+</tbody></table>
+<p><strong>Lifecycle:</strong> collect &rarr; prepare &rarr; train &rarr; validate &rarr; test &rarr; deploy &rarr; monitor &rarr; retrain.</p>
+<h2>Exam traps</h2>
+<ul>
+<li>Features go in, labels come out. Price is the label; bedrooms are features.</li>
+<li>A target column means supervised learning; no target means clustering.</li>
+<li>Accuracy alone hides failure on imbalanced data.</li>
+<li>Validation guides choices; the test set reports the final score.</li>
+<li>Compute instance is for authoring; compute cluster is for scale-out training.</li>
+<li>AutoML is a search over algorithms, not a model type.</li>
+<li>Azure ML trains custom models; Microsoft Foundry builds generative apps and agents.</li>
+</ul>
+<footer>AI-901 cheat sheet 2 of 5 &middot; unofficial study aid &middot; snapshot 2026-11</footer>
+</article>
+
+<article class="sheet" id="sheet-3" aria-label="Computer vision on Azure">
+<h1>AI-901 cheat sheet 3/5 &mdash; Computer vision on Azure</h1>
+<p class="note"><em>One page. Facts snapshot 2026-11; verify current behaviour on Microsoft Learn before the exam.</em></p>
+<h2>Azure AI Vision</h2>
+<table><thead><tr><th>Capability</th><th>Output</th></tr></thead><tbody>
+<tr><td>Caption</td><td>One sentence for the whole image.</td></tr>
+<tr><td>Dense captions</td><td>Several captions, each tied to a region.</td></tr>
+<tr><td>Tags</td><td>Keywords such as outdoors, person, building.</td></tr>
+<tr><td>Objects</td><td>A label and bounding box per object.</td></tr>
+<tr><td>Read (OCR)</td><td>Printed and handwritten text as lines and words with positions.</td></tr>
+<tr><td>Smart cropping</td><td>Crop coordinates that keep the main subject visible.</td></tr>
+<tr><td>People detection</td><td>Locations of people in the image.</td></tr>
+</tbody></table>
+<p><strong>Vision Studio</strong> is a browser playground for trying these features on sample or uploaded images without code.</p>
+<h2>Classification vs object detection</h2>
+<table><thead><tr><th></th><th>Image classification</th><th>Object detection</th></tr></thead><tbody>
+<tr><td>Question</td><td>What is in the image?</td><td>What is where?</td></tr>
+<tr><td>Output</td><td>One or more labels for the whole image</td><td>A label <strong>and</strong> a box per object</td></tr>
+<tr><td>Several objects</td><td>Not located</td><td>Each object reported separately</td></tr>
+<tr><td>Example</td><td>Photo contains a dog</td><td>Dog at (x1, y1, x2, y2); cat at (x3, y3, x4, y4)</td></tr>
+</tbody></table>
+<p>If the requirement mentions <em>position</em>, <em>count</em>, or <em>multiple items</em>, choose object detection.</p>
+<h2>OCR vs Document Intelligence</h2>
+<table><thead><tr><th></th><th>OCR (Vision Read)</th><th>Document Intelligence</th></tr></thead><tbody>
+<tr><td>Input</td><td>Photo, sign, scan, page</td><td>Forms, invoices, receipts, IDs</td></tr>
+<tr><td>Output</td><td>Text and word positions</td><td>Structured fields, tables, key-value pairs</td></tr>
+<tr><td>Layout</td><td>Lines and words</td><td>Sections, tables, selection marks</td></tr>
+<tr><td>Best for</td><td>Unstructured text in an image</td><td>Business documents with a known schema</td></tr>
+</tbody></table>
+<p>OCR gives you text. Document Intelligence gives you meaning: which number is the total, which date is due.</p>
+<h2>Document Intelligence models</h2>
+<table><thead><tr><th>Model</th><th>Extracts</th></tr></thead><tbody>
+<tr><td>Read</td><td>Text, lines, words, languages.</td></tr>
+<tr><td>Layout</td><td>Text, tables, selection marks, headers, reading order.</td></tr>
+<tr><td>Invoice</td><td>Vendor, customer, invoice date, due date, line items, subtotal, tax, total.</td></tr>
+<tr><td>Receipt</td><td>Merchant, transaction date and time, line items, tax, total.</td></tr>
+<tr><td>Identity document</td><td>Name, date of birth, document number, expiry from passports and ID cards.</td></tr>
+<tr><td>Business card</td><td>Name, company, phone, email, address.</td></tr>
+<tr><td>Custom template</td><td>Your fields from consistent forms.</td></tr>
+<tr><td>Custom neural</td><td>Your fields from forms with more layout variation.</td></tr>
+<tr><td>Custom composed</td><td>A collection of models, routed automatically.</td></tr>
+</tbody></table>
+<p>Choose <strong>custom</strong> when the prebuilt schema does not match your document.</p>
+<h2>Custom Vision</h2>
+<table><thead><tr><th>Project type</th><th>Output and labelling</th></tr></thead><tbody>
+<tr><td>Image classification</td><td>One or more labels for the whole image; tag each image.</td></tr>
+<tr><td>Object detection</td><td>A label and box per object; draw a box around each object.</td></tr>
+</tbody></table>
+<p>Custom Vision is <strong>supervised</strong>: upload and label your own images, train, evaluate, and publish a prediction endpoint. Use it when prebuilt models do not cover your classes.</p>
+<h2>Face</h2>
+<table><thead><tr><th>Capability</th><th>Question it answers</th></tr></thead><tbody>
+<tr><td>Face detection</td><td>Is there a face, and what is its pose, blur, exposure, or occlusion?</td></tr>
+<tr><td>Face verification</td><td>Does this face match the claimed person? One-to-one.</td></tr>
+<tr><td>Face identification</td><td>Which person in a group matches this face? One-to-many.</td></tr>
+<tr><td>Liveness detection</td><td>Is a real person present, rather than a photo, video, or mask?</td></tr>
+</tbody></table>
+<p><strong>Limited Access:</strong> identification and verification need approval and responsible AI safeguards. Detection is broadly available. Recognition is not detection.</p>
+<h2>Choosing a service</h2>
+<table><thead><tr><th>Requirement</th><th>Service or task</th></tr></thead><tbody>
+<tr><td>Describe a photo, tag it, crop a thumbnail</td><td>Azure AI Vision image analysis</td></tr>
+<tr><td>Read text from a sign or scanned page</td><td>Azure AI Vision Read (OCR)</td></tr>
+<tr><td>Extract fields from invoices or receipts</td><td>Document Intelligence prebuilt model</td></tr>
+<tr><td>Extract fields from your own form</td><td>Document Intelligence custom model</td></tr>
+<tr><td>Classify your product photos</td><td>Custom Vision image classification</td></tr>
+<tr><td>Find and locate products or defects</td><td>Custom Vision object detection</td></tr>
+<tr><td>Prevent photo spoofing in face sign-in</td><td>Liveness detection</td></tr>
+</tbody></table>
+<h2>Exam traps</h2>
+<ul>
+<li>Azure AI Vision is prebuilt; Custom Vision trains on your labelled images.</li>
+<li>Document Intelligence is built on OCR but adds structure.</li>
+<li>Layout is not the invoice model; the invoice model returns business fields.</li>
+<li>Bounding boxes mean detection, not classification.</li>
+<li>Face detection does not identify anyone.</li>
+<li>Smart cropping suggests a crop; it does not remove objects.</li>
+<li>Vision Studio is a playground, not a production endpoint.</li>
+</ul>
+<footer>AI-901 cheat sheet 3 of 5 &middot; unofficial study aid &middot; snapshot 2026-11</footer>
+</article>
+
+<article class="sheet" id="sheet-4" aria-label="Natural language processing on Azure">
+<h1>AI-901 cheat sheet 4/5 &mdash; Natural language processing on Azure</h1>
+<p class="note"><em>One page. Facts snapshot 2026-11; verify current behaviour on Microsoft Learn before the exam.</em></p>
+<h2>Typical NLP flow</h2>
+<pre>Input text &rarr; language detection &rarr; sentiment / key phrases / entities &rarr; structured output</pre>
+<p>Language detection usually runs first so later models know which language rules to apply.</p>
+<h2>Azure AI Language</h2>
+<table><thead><tr><th>Capability</th><th>What it returns</th></tr></thead><tbody>
+<tr><td>Language detection</td><td>Detected language and confidence score.</td></tr>
+<tr><td>Sentiment analysis</td><td>Positive, negative, neutral, or mixed, with scores; optionally per sentence.</td></tr>
+<tr><td>Opinion mining</td><td>Sentiment tied to specific aspects or targets.</td></tr>
+<tr><td>Key phrase extraction</td><td>The main concepts and terms.</td></tr>
+<tr><td>Named entity recognition</td><td>Typed entities: person, organisation, location, date, quantity.</td></tr>
+<tr><td>PII detection</td><td>Personal data found, with optional redaction.</td></tr>
+<tr><td>Summarisation</td><td>A short version of long text, including conversations.</td></tr>
+<tr><td>Question answering</td><td>The best answer from a curated knowledge base, with confidence.</td></tr>
+<tr><td>CLU</td><td>The predicted intent and extracted entities.</td></tr>
+</tbody></table>
+<p><strong>Language Studio</strong> is a browser playground for testing these features without code.</p>
+<h2>Sentiment and opinions</h2>
+<table><thead><tr><th>Term</th><th>Meaning</th></tr></thead><tbody>
+<tr><td>Document sentiment</td><td>Overall label and confidence for the whole text.</td></tr>
+<tr><td>Sentence sentiment</td><td>A label per sentence, so one bad paragraph does not hide the rest.</td></tr>
+<tr><td>Opinion mining</td><td>Links an opinion to its target: location positive, room service negative.</td></tr>
+</tbody></table>
+<p>Sentiment tells you <em>how</em> someone feels; opinion mining tells you <em>what</em> they feel it about.</p>
+<h2>Entities vs key phrases</h2>
+<table><thead><tr><th></th><th>Named entity recognition</th><th>Key phrase extraction</th></tr></thead><tbody>
+<tr><td>Output</td><td>Typed entities with categories</td><td>Important terms and phrases</td></tr>
+<tr><td>Example</td><td>Person: Ada Lovelace; Location: Paris; Date: 12 May</td><td>"supplier contract", "delivery delay"</td></tr>
+<tr><td>Use</td><td>Extract people, places, organisations, dates</td><td>Index, search, topic review</td></tr>
+</tbody></table>
+<p><strong>PII detection</strong> is a specialised entity task: it finds names, phone numbers, and addresses and can return redacted text.</p>
+<h2>Summarisation</h2>
+<table><thead><tr><th>Type</th><th>How it works and trade-off</th></tr></thead><tbody>
+<tr><td>Extractive</td><td>Selects existing sentences. Faithful wording, but can be disjointed.</td></tr>
+<tr><td>Abstractive</td><td>Generates new wording. Fluent, but must be checked for accuracy.</td></tr>
+<tr><td>Conversation</td><td>Summarises a dialogue into issues, resolution, and follow-ups.</td></tr>
+</tbody></table>
+<h2>Question answering vs CLU</h2>
+<table><thead><tr><th></th><th>Question answering</th><th>Conversational language understanding</th></tr></thead><tbody>
+<tr><td>Purpose</td><td>Retrieve an answer from curated content</td><td>Decide what the user wants to do</td></tr>
+<tr><td>Input</td><td>A question</td><td>An utterance</td></tr>
+<tr><td>Output</td><td>Answer text, source, confidence</td><td>Intent and entities</td></tr>
+<tr><td>Built from</td><td>FAQs, documents, URLs</td><td>Labelled utterances</td></tr>
+<tr><td>Example</td><td>"What is the returns window?" &rarr; 30 days</td><td>"Cancel my order" &rarr; CancelOrder, order id</td></tr>
+</tbody></table>
+<p>Predictable FAQ-style answers point to question answering. A bot that must choose an action points to CLU.</p>
+<h2>CLU concepts</h2>
+<table><thead><tr><th>Term</th><th>Meaning and example</th></tr></thead><tbody>
+<tr><td>Intent</td><td>The user's goal: BookFlight, CancelBooking, Complain.</td></tr>
+<tr><td>Entity</td><td>A detail that fills in the intent: Destination Paris; Date Friday.</td></tr>
+<tr><td>Utterance</td><td>A labelled example phrase: "I need a flight to Paris on Friday".</td></tr>
+</tbody></table>
+<p>More varied, correctly labelled utterances produce a more robust model.</p>
+<h2>Translation and speech</h2>
+<table><thead><tr><th>Capability</th><th>What it does</th></tr></thead><tbody>
+<tr><td>Text translation</td><td>Converts text between languages; can auto-detect the source.</td></tr>
+<tr><td>Document translation</td><td>Translates whole documents and preserves structure.</td></tr>
+<tr><td>Custom glossary</td><td>Forces brand or domain terms to translate consistently.</td></tr>
+<tr><td>Speech to text</td><td>Transcribes spoken audio.</td></tr>
+<tr><td>Text to speech</td><td>Synthesises spoken audio from text.</td></tr>
+<tr><td>Speech translation</td><td>Recognises speech in one language and outputs another, as text or speech.</td></tr>
+</tbody></table>
+<p>Language detection <em>identifies</em> the language; translation <em>converts</em> it. Recognition is audio to text; synthesis is the reverse.</p>
+<h2>Choosing a service</h2>
+<table><thead><tr><th>Requirement</th><th>Capability</th></tr></thead><tbody>
+<tr><td>Is this review positive or negative?</td><td>Sentiment analysis</td></tr>
+<tr><td>Which product does the customer mention?</td><td>Named entity recognition</td></tr>
+<tr><td>What is this document about?</td><td>Key phrase extraction</td></tr>
+<tr><td>Which language is this?</td><td>Language detection</td></tr>
+<tr><td>Hide names before sharing</td><td>PII detection and redaction</td></tr>
+<tr><td>Summarise a long call transcript</td><td>Summarisation</td></tr>
+<tr><td>Answer FAQs from a knowledge base</td><td>Question answering</td></tr>
+<tr><td>Decide book versus cancel</td><td>CLU intent recognition</td></tr>
+<tr><td>Translate into 12 languages</td><td>Azure AI Translator</td></tr>
+<tr><td>Voice in French, voice out in English</td><td>Speech translation</td></tr>
+</tbody></table>
+<h2>Exam traps</h2>
+<ul>
+<li>Question answering retrieves; CLU classifies intent.</li>
+<li>Intent is the goal; entities are the details.</li>
+<li>Key phrases are topics; entities are typed things.</li>
+<li>PII detection is privacy, not topic discovery.</li>
+<li>Extractive copies sentences; abstractive writes new ones.</li>
+<li>Azure AI Language analyses text; Azure OpenAI generates it.</li>
+</ul>
+<footer>AI-901 cheat sheet 4 of 5 &middot; unofficial study aid &middot; snapshot 2026-11</footer>
+</article>
+
+<article class="sheet" id="sheet-5" aria-label="Generative AI on Azure" style="font-size:7.9pt">
+<h1>AI-901 cheat sheet 5/5 &mdash; Generative AI on Azure</h1>
+<p class="note"><em>One page. Facts snapshot 2026-11; verify current behaviour on Microsoft Learn before the exam.</em></p>
+<h2>Core terms</h2>
+<table><thead><tr><th>Term</th><th>Meaning</th></tr></thead><tbody>
+<tr><td>Foundation model</td><td>Large model pretrained on broad data, adaptable to many tasks.</td></tr>
+<tr><td>Large language model</td><td>Foundation model trained to predict and generate token sequences.</td></tr>
+<tr><td>Token</td><td>Unit of text: a word, part of a word, or punctuation. Cost and context use tokens.</td></tr>
+<tr><td>Context window</td><td>Maximum input plus output tokens considered at once.</td></tr>
+<tr><td>Deployment</td><td>A named hosted instance of a model, called through an endpoint.</td></tr>
+</tbody></table>
+<h2>Anatomy of a request</h2>
+<p><strong>System prompt</strong> sets role and rules, <strong>user prompt</strong> carries the request, <strong>grounding data</strong> supplies evidence, and the model returns a completion. Earlier assistant messages can be replayed as history.</p>
+<h2>Prompting techniques</h2>
+<table><thead><tr><th>Technique</th><th>What you do and when</th></tr></thead><tbody>
+<tr><td>Zero-shot</td><td>Ask with no examples; simple, well-known task.</td></tr>
+<tr><td>Few-shot</td><td>Include a few worked examples; output format matters.</td></tr>
+<tr><td>Role and format</td><td>Set a role and an output shape (JSON, table, length) in the prompt.</td></tr>
+<tr><td>Grounding</td><td>Supply source text and require the answer to use it; current or private facts.</td></tr>
+</tbody></table>
+<p>Prompt engineering changes the request, not the model weights. Try it before paying for fine-tuning.</p>
+<h2>Generation settings</h2>
+<table><thead><tr><th>Setting</th><th>Effect and typical choice</th></tr></thead><tbody>
+<tr><td>Temperature</td><td>Higher is more random and creative; lower is focused and repeatable. Low for facts.</td></tr>
+<tr><td>Top-p (nucleus)</td><td>Smallest token set whose cumulative probability reaches p. Tune one setting at a time.</td></tr>
+<tr><td>Max output tokens</td><td>Caps completion length; controls cost and truncation.</td></tr>
+</tbody></table>
+<h2>Azure OpenAI and Foundry</h2>
+<table><thead><tr><th>Component</th><th>Purpose</th></tr></thead><tbody>
+<tr><td>Azure OpenAI in Foundry Models</td><td>OpenAI models with Azure identity, networking, content filtering, compliance.</td></tr>
+<tr><td>Microsoft Foundry</td><td>Model catalogue, playgrounds, deployments, evaluations, agents, governance.</td></tr>
+<tr><td>Deployment and endpoint</td><td>Host a model with a name and capacity; call it with a key or managed identity.</td></tr>
+<tr><td>Evaluation</td><td>Measure quality, groundedness, relevance, and safety before release.</td></tr>
+</tbody></table>
+<p>Azure OpenAI hosts generative models with Azure controls. Azure AI Language, Vision, and Speech are prebuilt task services. Azure Machine Learning trains custom classical models.</p>
+<h2>RAG &mdash; retrieval-augmented generation</h2>
+<pre>User question &rarr; retrieve relevant chunks &rarr; add to prompt &rarr; model answers &rarr; citations</pre>
+<table><thead><tr><th>Step</th><th>Typical service and why</th></tr></thead><tbody>
+<tr><td>Index and retrieve</td><td>Azure AI Search. Keyword, vector, or hybrid search over your content; fetch the best chunks.</td></tr>
+<tr><td>Augment</td><td>Prompt construction. Put evidence and instructions in the context window.</td></tr>
+<tr><td>Generate</td><td>Azure OpenAI deployment. Answer using the supplied evidence.</td></tr>
+<tr><td>Cite</td><td>Application. Let users verify the answer against sources.</td></tr>
+</tbody></table>
+<p>RAG reduces hallucinations but does not guarantee truth. Use it for private content and knowledge that changes often.</p>
+<h2>Hallucination, grounding, and citations</h2>
+<table><thead><tr><th>Term</th><th>Meaning</th></tr></thead><tbody>
+<tr><td>Hallucination</td><td>Fluent, confident output that is false or unsupported.</td></tr>
+<tr><td>Grounding</td><td>Supplying source evidence so the answer is based on it.</td></tr>
+<tr><td>Citation</td><td>A link from a claim back to the retrieved source.</td></tr>
+</tbody></table>
+<p>Reduce hallucination with retrieval, a strict instruction to use only supplied sources, citations, lower temperature, and human review for high-impact decisions.</p>
+<h2>Prompting vs RAG vs fine-tuning</h2>
+<table><thead><tr><th>Approach</th><th>Changes, best for, cost</th></tr></thead><tbody>
+<tr><td>Prompt engineering</td><td>Changes the request. Tone, format, quick iteration. Lowest cost.</td></tr>
+<tr><td>RAG</td><td>Changes context at query time. Current or private facts, citations. Medium.</td></tr>
+<tr><td>Fine-tuning</td><td>Changes model weights with examples. Consistent style or narrow task. Highest.</td></tr>
+</tbody></table>
+<p>Fine-tuning teaches behaviour and format; RAG supplies knowledge. If facts change weekly, use RAG.</p>
+<h2>Responsible generative AI</h2>
+<table><thead><tr><th>Control</th><th>What it does</th></tr></thead><tbody>
+<tr><td>Content filters</td><td>Assess prompts and completions for hate, sexual, violence, and self-harm, with severity thresholds.</td></tr>
+<tr><td>Prompt shields</td><td>Detect jailbreaks and indirect prompt injection, including hidden document instructions.</td></tr>
+<tr><td>Human oversight</td><td>Review outputs before high-impact decisions such as hiring, credit, or healthcare.</td></tr>
+<tr><td>Evaluation and monitoring</td><td>Test quality, safety, and groundedness before release, then watch production traffic.</td></tr>
+</tbody></table>
+<p>Content filters handle harmful content; prompt shields handle prompt attacks. Neither replaces human review.</p>
+<h2>Copilot and agents</h2>
+<table><thead><tr><th>Concept</th><th>What it is</th></tr></thead><tbody>
+<tr><td>Microsoft 365 Copilot</td><td>Assistant in Word, Excel, Outlook, and Teams; uses content the user can already access.</td></tr>
+<tr><td>Copilot Studio</td><td>Low-code builder for custom copilots and agents: topics, connectors, knowledge.</td></tr>
+<tr><td>Agent</td><td>A language model plus instructions plus tools.</td></tr>
+<tr><td>Tools</td><td>Knowledge tools retrieve; action tools send mail or update a record.</td></tr>
+</tbody></table>
+<h2>Exam traps</h2>
+<ul>
+<li>Tokens are text units, not credentials or pixels.</li>
+<li>A bigger context window does not make output true.</li>
+<li>Higher temperature increases variety, not safety.</li>
+<li>RAG grounds answers; fine-tuning changes behaviour.</li>
+<li>Citations make answers verifiable; they do not prove them.</li>
+</ul>
+<footer>AI-901 cheat sheet 5 of 5 &middot; unofficial study aid &middot; snapshot 2026-11</footer>
+</article>
+
+</main>
+</body>
+</html>
